@@ -64,7 +64,7 @@ retrievaler = None
 kg_retrievaler = None
 
 # user registration switch
-REGISTER_ENABLED = 1
+REGISTER_ENABLED = 0
 
 
 def init_settings():
