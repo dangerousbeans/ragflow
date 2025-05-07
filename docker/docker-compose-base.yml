@@ -32,7 +32,7 @@ services:
       timeout: 10s
       retries: 120
     networks:
-      - ragflow
+      - webnet
     restart: on-failure
 
   opensearch01:
@@ -70,7 +70,7 @@ services:
       timeout: 10s
       retries: 120
     networks:
-      - ragflow
+      - webnet
     restart: on-failure
 
   infinity:
@@ -95,7 +95,7 @@ services:
         soft: 500000
         hard: 500000
     networks:
-      - ragflow
+      - webnet
     healthcheck:
       test: ["CMD", "curl", "http://localhost:23820/admin/node/current"]
       interval: 10s
@@ -153,7 +153,7 @@ services:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/data/application/init.sql
     networks:
-      - ragflow
+      - webnet
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-uroot", "-p${MYSQL_PASSWORD}"]
       interval: 10s
@@ -190,7 +190,7 @@ services:
     volumes:
       - redis_data:/data
     networks:
-      - ragflow
+      - webnet
     restart: on-failure
 
 
@@ -210,5 +210,5 @@ volumes:
     driver: local
 
 networks:
-  ragflow:
-    driver: bridge
+  webnet:
+    external: true
