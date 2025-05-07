@@ -279,9 +279,18 @@ export const useScrollToBottom = (messages?: unknown) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = useCallback(() => {
-    if (messages && containerRef.current) {
-      // Use scrollTop to scroll within the container only
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    // scroll to bottom: if inside an iframe, scroll the iframe document; otherwise, scroll the chat container
+    const scrollContainer = containerRef.current?.parentElement;
+    if (window.self !== window.top) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    } else if (scrollContainer) {
+      scrollContainer.scrollTo({
+        top: scrollContainer.scrollHeight,
+        behavior: 'smooth',
+      });
     }
   }, [messages]); // If the message changes, scroll to the bottom
 
