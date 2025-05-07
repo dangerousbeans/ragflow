@@ -176,7 +176,7 @@ services:
     volumes:
       - minio_data:/data
     networks:
-      - ragflow
+      - webnet
     restart: on-failure
 
   redis:
