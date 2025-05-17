@@ -209,6 +209,11 @@ oauth:
     client_secret: "your_client_secret"
     redirect_uri: "https://your-app.com/v1/user/oauth/callback/github"
 ```
+https://your-app.com/oauth/callback/<channel>
+```
+
+For detailed instructions on configuring **service_conf.yaml.template**, please refer to [Usage](https://github.com/infiniflow/ragflow/blob/main/api/apps/auth/README.md#usage).
+
 :::
 
 ### `user_default_llm`  
