@@ -44,7 +44,9 @@ services:
       - HF_ENDPOINT=${HF_ENDPOINT}
       - MACOS=${MACOS}
     networks:
-      - webnet
+      webnet:
+        aliases:
+          - ragflow-server 
     restart: on-failure
     # https://docs.docker.com/engine/daemon/prometheus/#create-a-prometheus-configuration
     # If you use Docker Desktop, the --add-host flag is optional. This flag ensures that the host's internal IP is exposed to the Prometheus container.
@@ -74,4 +76,3 @@ services:
   #     - "host.docker.internal:host-gateway"
 networks:
   webnet:
-    external: true
