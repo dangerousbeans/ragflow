@@ -76,3 +76,4 @@ services:
   #     - "host.docker.internal:host-gateway"
 networks:
   webnet:
+    external: true
