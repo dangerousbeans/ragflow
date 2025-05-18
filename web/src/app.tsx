@@ -1,5 +1,6 @@
 import { Toaster as Sonner } from '@/components/ui/sonner';
 import { Toaster } from '@/components/ui/toaster';
+import { useFetchAppConf } from '@/hooks/logic-hooks';
 import i18n from '@/locales/config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -44,7 +45,11 @@ const queryClient = new QueryClient();
 type Locale = ConfigProviderProps['locale'];
 
 function Root({ children }: React.PropsWithChildren) {
-  const { theme: themeragflow } = useTheme();
+  const appConf = useFetchAppConf();
+  useEffect(() => {
+    document.title = appConf.appName || 'PlayPath.io';
+  }, [appConf.appName]);
+  const { theme: appTheme } = useTheme();
   const getLocale = (lng: string) =>
     AntLanguageMap[lng as keyof typeof AntLanguageMap] ?? enUS;
 
@@ -63,9 +68,7 @@ function Root({ children }: React.PropsWithChildren) {
             fontFamily: 'Inter',
           },
           algorithm:
-            themeragflow === 'dark'
-              ? theme.darkAlgorithm
-              : theme.defaultAlgorithm,
+            appTheme === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
         }}
         locale={locale}
       >
@@ -92,7 +95,7 @@ const RootProvider = ({ children }: React.PropsWithChildren) => {
   return (
     <TooltipProvider>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider defaultTheme="light" storageKey="ragflow-ui-theme">
+        <ThemeProvider defaultTheme="light" storageKey="playpath-ui-theme">
           <Root>{children}</Root>
         </ThemeProvider>
       </QueryClientProvider>

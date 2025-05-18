@@ -42,7 +42,7 @@ export default {
     login: {
       login: 'Sign in',
       signUp: 'Sign up',
-      loginDescription: 'We’re so excited to see you again!',
+      loginDescription: 'Welcome',
       registerDescription: 'Glad to have you on board!',
       emailLabel: 'Email',
       emailPlaceholder: 'Please input email',
@@ -55,10 +55,9 @@ export default {
       nicknamePlaceholder: 'Please input nickname',
       register: 'Create an account',
       continue: 'Continue',
-      title: 'Start building your smart assistants.',
-      description:
-        'Sign up for free to explore top RAG technology. Create knowledge bases and AIs to empower your business.',
-      review: 'from 500+ reviews',
+      title: '',
+      description: '',
+      review: '',
     },
     header: {
       knowledgeBase: 'Knowledge Base',
@@ -455,7 +454,8 @@ This auto-tagging feature enhances retrieval by adding another layer of domain-s
       modelTip: 'Large language chat model',
       modelMessage: 'Please select!',
       modelEnabledTools: 'Enabled tools',
-      modelEnabledToolsTip: 'Please select one or more tools for the chat model to use. It takes no effect for models not supporting tool call.',
+      modelEnabledToolsTip:
+        'Please select one or more tools for the chat model to use. It takes no effect for models not supporting tool call.',
       freedom: 'Freedom',
       improvise: 'Improvise',
       precise: 'Precise',
@@ -1271,11 +1271,12 @@ This delimiter is used to split the input text into several text pieces echo of 
     },
     llmTools: {
       bad_calculator: {
-        name: "Calculator",
-        description: "A tool to calculate the sum of two numbers (will give wrong answer)",
+        name: 'Calculator',
+        description:
+          'A tool to calculate the sum of two numbers (will give wrong answer)',
         params: {
-          a: "The first number",
-          b: "The second number",
+          a: 'The first number',
+          b: 'The second number',
         },
       },
     },
